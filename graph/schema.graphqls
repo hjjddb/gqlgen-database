@@ -1,0 +1,59 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type User {
+  id: ID!
+  wallet: Wallet!
+  wallet_id: ID!
+  name: String!
+  phone_number: String!
+  password: String!
+}
+
+type Wallet {
+  id: ID!
+  user: User!
+  user_id: ID!
+  BTC_address: String!
+  BTC_balance: Float!
+  ETH_address: String!
+  ETH_balance: Float!
+  scash_balance: Float!
+  giftcards: [Giftcard]
+}
+
+type Giftcard {
+  id: ID!
+  wallet: Wallet!
+  wallet_id: ID!
+  number: String!
+  pin: String!
+  brand: String!
+  balance: Int!
+  exp: String!
+  tradable: Boolean!
+}
+
+type CryptoTransaction {
+  id: ID!
+  from: User!
+  from_id: ID!
+  to: User!
+  to_id: ID!
+  currency: String!
+  amount: Float!
+  datetime: String!
+  status: String!
+}
+
+type GiftcardTransaction {
+  id: ID!
+  from: User!
+  from_id: ID!
+  to: User!
+  to_id: ID!
+  card_id: String!
+  datetime: String!
+  status: String!
+}
